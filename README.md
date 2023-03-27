@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+## CRUD Falatozz.hu Webalkalmazás feladat.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Navigáció
 
-## Available Scripts
+A webalkalmazás két oldalból áll, ahogy a feladatban is le van írva. 
+Egy Read oldalból mely a "/" (Home) oldala is magának a weboldalnak,
+illetve egy "/create". oldalnak. 
 
-In the project directory, you can run:
+Ezek természetesen az URL sávban is láthatóak, és meghívhatóak. 
+Kényelmesebb, megoldást nyújt azonban az oldal alján található, 
+navigációs sáv.
 
-### `npm start`
+Az oldal ezen felül tartalmaz egy rejtett, hiba oldalt. 
+Amennyiben hibásan hívjuk meg magát az oldalt, 
+ez jelenik meg számunkra, és itt is található egy navigációs sáv.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A navigációs sávon az épp aktuális oldal lesz alá húzva.
+(ehhez react-router-dom csomagot használtam, illetve az  URL ágak létre hozásához.)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Read (Homepage)
+A termékek középen kártyaszerű felületbe vannak téve, egymás alá igazítva.
+Felül A termék neve
+Alatta a termék leírása
+Legalul, a termékből található mennyiség látható.
+A termék darab száma mellet balra egy szerkesztő gomb található,
+jobbra pedig egy törlő gomb.
 
-### `npm test`
+### Szerkesztés
+ A szerkesztés gomb megnyomásakor egy CSS-ben létrehozott, ablak jelenik meg.
+ A felületen 3 bemeneti hely található, a termék adatival kitöltve,
+ illetve egy mégse és egy frissítés gomb.
+ Amennyiben üresen, hagyunk valamelyik vagy több beviteli felületet,
+ szöveges figyelmeztetést kapunk, illetve,
+ inaktívvá válik a frissítés gomb.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Amennyiben sikeresen mindent kitöltöttünk, a Frissítés gombra kattintva, 
+ frissül az adatbázisban a termék. 
 
-### `npm run build`
+ Amennyiben a mégsére, a felület eltűnik és újból a "read" felületet látjuk.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ ### Törlés
+ Amennyiben egy terméket törölni szeretnénk, nyomjunk a kis kuka gombra. 
+ Egy CSS-ben készült ablak ugrik fel, melyen 
+ felül egy "Biztos törli?" felirat,
+ középen a termék neve
+ alul egy mégse (vissza read oldalra) és egy Biztos törlés gomb található
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ Amennyiben a biztos törlés gombra kattint a termék törlődik az adatbázisból.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ # Creat (Létrehozás)
+A Creat oldalon, új terméket lehet létrehozni.
+A felületen felül egy "Új termék hozzá adása:" felirat szerepel,
+Alatta a 3 kötelezően kitöltendő input sávok,
+Legalul pedig egy Küldés gomb.
 
-### `npm run eject`
+Amennyiben üresen vagy nem teljesen kitöltve szeretnénk beküldeni a felületet,
+ezt az oldal nem engedélyezi.
+A felületen is és egy alert is jelzi hol és mi üres. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Amennyiben sikeresen beírtunk minden adatot, a küldésgombot megnyomva 
+újrból a Read felületre navigál minket a weboldal, ahol a termékünk megjelenik.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Eszközök
+A feladatban használtam a react alap mappát, illetve react-router-dom-ot bővítményt , és firebase backendet használtam.
