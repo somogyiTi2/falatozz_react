@@ -15,7 +15,7 @@ export const Update = (props) => {
             })
         }
         )
-
+        window.location.reload();
     }
 
     return (

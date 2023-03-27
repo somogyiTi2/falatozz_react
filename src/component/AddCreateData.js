@@ -36,10 +36,25 @@ export const AddCardData = (props) => {
         //az egészet ellenörzi hogy igaz e
         const formIsValid =
             enteredNameIsValid &&
+            enteredDescriotionIsValid &&
             enteredPieceIsValid;
         //ha nem igaz minden akkor nem ad vissza értéket
+        
         if (!formIsValid) {
+            const error = [];
+            if (enteredNameIsValid===false){
+                error.push("Mi a neve a terméknek?");
+            }
+            if (enteredDescriotionIsValid===false){
+                error.push("Írjon a termékről!");
+            }
+            if (enteredPieceIsValid===false){
+                error.push("Hány darab van a termékből?");
+            }
+          alert( error)  
+          
             return;
+            
         }
 
         props.onConfirm({
@@ -61,6 +76,7 @@ export const AddCardData = (props) => {
                             ref={nameInputRef}
                         />
                         {!formInputsValidity.name && <p>Kérem töltse ki</p>}
+                        
                     </p>
                     <p>Leírása:
                         <input
@@ -69,6 +85,7 @@ export const AddCardData = (props) => {
                             ref={descriptionInputRef}
                         ></input></p>
                     {!formInputsValidity.description && <p>Kérem töltse ki</p>}
+   
                     <p>Darab:
                         <input
                             type='number'
@@ -76,7 +93,7 @@ export const AddCardData = (props) => {
                             ref={pieceInputRef}
                         ></input></p>
                     {!formInputsValidity.piece && <p>Kérem töltse ki vagy legyen az érték nagyobb 0 nál.</p>}
-                   
+      
                     <button type='submit'> Küldés </button>
                 </form>
 
