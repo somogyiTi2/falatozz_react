@@ -76,7 +76,7 @@ export const AddCardData = (props) => {
                             ref={pieceInputRef}
                         ></input></p>
                     {!formInputsValidity.piece && <p>Kérem töltse ki vagy legyen az érték nagyobb 0 nál.</p>}
-                    <button onClick={props.onShow}> Mégse </button>
+                   
                     <button type='submit'> Küldés </button>
                 </form>
 
