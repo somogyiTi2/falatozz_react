@@ -7,9 +7,9 @@ export const Card = (props) => {
       <h1>{props.name}</h1>
       <p>{props.description}</p>
       <p>
-      <button onClick={props.update}><h1>✏️</h1></button>
+      <h1 onClick={props.update}>✏️</h1>
       {props.piece} DB
-      <button onClick={props.delete}><h1>🚮</h1></button></p>
+      <h1 onClick={props.delete}>🚮</h1></p>
     </div>
   )
 }

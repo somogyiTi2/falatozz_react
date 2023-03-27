@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
+import classes from './AddCreateData.module.css';
 
 
 const isEmpty = (value) => value.trim() === '';
@@ -67,8 +68,7 @@ export const AddCardData = (props) => {
     };
 
     return (
-
-                <form onSubmit={confirmHandler}>
+                <form className={classes.form} onSubmit={confirmHandler}>
                     <p>Termék neve:
                         <input
                             type='text'

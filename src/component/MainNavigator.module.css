@@ -3,7 +3,9 @@
     padding: 2rem;
     display: flex;
     justify-content: center;
-    background-color: gray;
+    background-color: #000;
+    margin-bottom:0px;
+    height: 10%;
   }
   
   .list {
@@ -13,11 +15,11 @@
   
   .list a {
     text-decoration: none;
-    color: var(--color-primary-400);
+    color: #7FD1AE;
   }
   
     .list a:hover,
     .list a.active {
-      color: var(--color-primary-800);
+      color: #007681;
       text-decoration: underline;
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import AddCreateData from './AddCreateData'
 
 
+
 export const Create = (props) => {
   const postMethod = async (props) => {
     await fetch('https://react-http-70f07-default-rtdb.firebaseio.com/falatozz.json', {
