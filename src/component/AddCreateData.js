@@ -52,12 +52,12 @@ export const AddCardData = (props) => {
     };
 
     return (
-        <div className='windowback'>
-            <div className='window'>
+
                 <form onSubmit={confirmHandler}>
                     <p>Termék neve:
                         <input
                             type='text'
+                            placeholder='Név'
                             ref={nameInputRef}
                         />
                         {!formInputsValidity.name && <p>Kérem töltse ki</p>}
@@ -65,12 +65,14 @@ export const AddCardData = (props) => {
                     <p>Leírása:
                         <input
                             type='text'
+                            placeholder='Leírás'
                             ref={descriptionInputRef}
                         ></input></p>
                     {!formInputsValidity.description && <p>Kérem töltse ki</p>}
-                    <p>Datab:
+                    <p>Darab:
                         <input
                             type='number'
+                            placeholder='Darab'
                             ref={pieceInputRef}
                         ></input></p>
                     {!formInputsValidity.piece && <p>Kérem töltse ki vagy legyen az érték nagyobb 0 nál.</p>}
@@ -78,8 +80,7 @@ export const AddCardData = (props) => {
                     <button type='submit'> Küldés </button>
                 </form>
 
-            </div>
-        </div>
+      
     )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import Card from './Card';
 import classes from './Read.module.css'
+import Update from './Update';
 
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // const DummyData = [
 //     { id: 1, name: "Shake and expresso", description: "These is a description", piece: 20 },
@@ -13,14 +14,13 @@ import {useState, useEffect } from 'react';
 export const Read = () => {
     const [data, setData] = useState([]);
 
+    const [UpdateWindow, setUpdateWindow] = useState('');
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
                 'https://react-http-70f07-default-rtdb.firebaseio.com/falatozz.json'
             );
-
-    
-
             const responseData = await response.json();
 
             const loadedData = [];
@@ -40,8 +40,10 @@ export const Read = () => {
         fetchData();
 
     }, []);
-    
-console.log(data);
+
+    const closeUpdateWindow = () => {
+        setUpdateWindow('');
+    }
 
     return (
         <>
@@ -52,8 +54,19 @@ console.log(data);
                         name={data.name}
                         description={data.description}
                         piece={data.piece} />
+                    <button onClick={() => setUpdateWindow(data)}>Frissítés</button>
                 </>)}
             </div>
+
+            {UpdateWindow === '' ? '' : <>
+                <div className="windowback">
+                    <div className="window">
+                        <Update update={UpdateWindow} onShow={closeUpdateWindow} />
+
+                    </div>
+                </div>
+            </>}
+
         </>
 
 

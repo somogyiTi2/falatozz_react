@@ -22,7 +22,7 @@ export const Create = (props) => {
     <>
       <hr />
         <h1>Új termék hozzá adása:</h1> 
-      <AddCreateData onConfirm={postMethod} onShow={props.onShow} /> 
+      <AddCreateData onConfirm={postMethod} /> 
     
       <hr />
     </>
