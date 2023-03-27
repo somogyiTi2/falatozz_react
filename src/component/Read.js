@@ -15,6 +15,8 @@ export const Read = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState();
 
+    const [search, setSearch] = useState('');
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
@@ -48,20 +50,20 @@ export const Read = () => {
 
     if (isLoading) {
         return (
-          <section>
-            <p>Loading...</p>
-          </section>
+            <section>
+                <p>Loading...</p>
+            </section>
         );
-      }
+    }
 
-      if (httpError) {
+    if (httpError) {
         return (
-          <section >
-            <p>{httpError}</p>
-          </section>
+            <section >
+                <p>{httpError}</p>
+            </section>
         );
-      }
-    
+    }
+
 
     const closeUpdateWindow = () => {
         setUpdateWindow('');
@@ -78,10 +80,17 @@ export const Read = () => {
         setDeleteWindow('');
     }
 
+    console.log(search);
     return (
         <>
+          <input onChange={(e)=>setSearch(e.target.value)}
+        
+       placeholder='Keress...'></input>
             <div className={classes.cards}>
-                {data.map((data) => <>
+                {data.filter((item) => {
+                    return search.toLocaleLowerCase === '' ? item :
+                        item.name.toLocaleLowerCase().includes(search)
+                }).map((data) => (<>
                     <Card
                         key={data.id}
                         name={data.name}
@@ -91,7 +100,7 @@ export const Read = () => {
                         delete={() => opernDeleteWindow(data)}
                     />
 
-                </>)}
+                </>))}
             </div>
 
             {UpdateWindow === '' ? '' : <>
