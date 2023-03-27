@@ -62,3 +62,9 @@ Amennyiben sikeresen beírtunk minden adatot, a küldésgombot megnyomva
 
 #### Eszközök
 A feladatban használtam a react alap mappát, illetve react-router-dom-ot bővítményt , és firebase backendet használtam.
+
+
+#### BRANCH 
+
+Egy keresőt adtam, hozzá.
+A keresőbe szórészletet is írhatunk, és mindegy, hogy kis vagy nagybetüvel, ugyan úgy működik.
