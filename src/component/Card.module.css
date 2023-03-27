@@ -1,0 +1,14 @@
+.card {
+    border: solid #3c1e14 3px;
+    background-color: rgba(114, 114, 114, 0.8);
+    border-radius: 10px;
+    margin: 1%;
+    height: 300px;
+    width: 300px;
+  
+}
+.card p{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
