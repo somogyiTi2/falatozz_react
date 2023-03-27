@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card';
 import classes from './Read.module.css'
 import Update from './Update';
+import Delete from './Delete';
 
 import { useState, useEffect } from 'react';
 
@@ -15,6 +16,7 @@ export const Read = () => {
     const [data, setData] = useState([]);
 
     const [UpdateWindow, setUpdateWindow] = useState('');
+    const [DeleteWindow, setDeleteWindow] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,6 +47,17 @@ export const Read = () => {
         setUpdateWindow('');
     }
 
+    const opernUpdateWindow = (props) => {
+        setUpdateWindow(props);
+    }
+    const opernDeleteWindow = (props) => {
+        setDeleteWindow(props);
+    }
+
+    const closeDeleteWindow = () => {
+        setDeleteWindow('');
+    }
+
     return (
         <>
             <div className={classes.cards}>
@@ -53,8 +66,11 @@ export const Read = () => {
                         key={data.id}
                         name={data.name}
                         description={data.description}
-                        piece={data.piece} />
-                    <button onClick={() => setUpdateWindow(data)}>Frissítés</button>
+                        piece={data.piece}
+                        update={() => opernUpdateWindow(data)}
+                        delete={()=>opernDeleteWindow(data)}
+                    />
+                
                 </>)}
             </div>
 
@@ -62,6 +78,14 @@ export const Read = () => {
                 <div className="windowback">
                     <div className="window">
                         <Update update={UpdateWindow} onShow={closeUpdateWindow} />
+                    </div>
+                </div>
+            </>}
+            {DeleteWindow === '' ? '' : <>
+                <div className="windowback">
+                    <div className="window">
+                        <h1>Biztos Törlöd?</h1>
+                        <Delete delete={DeleteWindow} onShow={closeDeleteWindow} />
 
                     </div>
                 </div>
