@@ -23,13 +23,10 @@ function App() {
     }, {
       path: '/create',
       element: <><Create /><RootLayout /></>,
-
-
     },
   ])
   return (
     <RouterProvider router={router} />
-  
   );
 }
 

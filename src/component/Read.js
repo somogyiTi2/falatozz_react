@@ -6,23 +6,24 @@ import Delete from './Delete';
 
 import { useState, useEffect } from 'react';
 
-// const DummyData = [
-//     { id: 1, name: "Shake and expresso", description: "These is a description", piece: 20 },
-//     { id: 2, name: "Orange", description: "Orange is orange", piece: 10 },
-//     { id: 3, name: "Apple", description: "Newton loves Apple", piece: 5 },
-// ];
-
 export const Read = () => {
     const [data, setData] = useState([]);
 
     const [UpdateWindow, setUpdateWindow] = useState('');
     const [DeleteWindow, setDeleteWindow] = useState('');
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [httpError, setHttpError] = useState();
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
                 'https://react-http-70f07-default-rtdb.firebaseio.com/falatozz.json'
             );
+
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
             const responseData = await response.json();
 
             const loadedData = [];
@@ -36,12 +37,31 @@ export const Read = () => {
                 });
             }
             setData(loadedData);
-
+            setIsLoading(false);
         };
-
-        fetchData();
+        fetchData().catch((error) => {
+            setIsLoading(false);
+            setHttpError(error.message);
+        });
 
     }, []);
+
+    if (isLoading) {
+        return (
+          <section>
+            <p>Loading...</p>
+          </section>
+        );
+      }
+
+      if (httpError) {
+        return (
+          <section >
+            <p>{httpError}</p>
+          </section>
+        );
+      }
+    
 
     const closeUpdateWindow = () => {
         setUpdateWindow('');
@@ -68,9 +88,9 @@ export const Read = () => {
                         description={data.description}
                         piece={data.piece}
                         update={() => opernUpdateWindow(data)}
-                        delete={()=>opernDeleteWindow(data)}
+                        delete={() => opernDeleteWindow(data)}
                     />
-                
+
                 </>)}
             </div>
 
@@ -90,10 +110,7 @@ export const Read = () => {
                     </div>
                 </div>
             </>}
-
         </>
-
-
     )
 
 }
