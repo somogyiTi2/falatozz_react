@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const AddUpdateData = (props) => {
-    //megoldható useStatel 
     const [enteredName, setEnteredName] = useState(props.update.name);
     const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
@@ -54,7 +53,7 @@ const AddUpdateData = (props) => {
 
     const forSubmissionHandler = event => {
         event.preventDefault();
-        //ez állítja azt,be hogy már műkködött e egyszer a validáció
+        //ez állítja azt,be hogy már működött-e egyszer a validáció
         if (!enteredNameIsValid) {
             return;
         }
@@ -97,7 +96,7 @@ const AddUpdateData = (props) => {
                 />
             </div>
             {descriptionInputIsInvalid && <p className="error-text">Üres a leírás!</p>}
-      
+
             <div className={PieceenteredName}>
                 <label htmlFor='name'>Darab:</label>
                 <input type='number'
@@ -109,7 +108,8 @@ const AddUpdateData = (props) => {
             </div>
             {pieceInputIsInvalid && <p className="error-text">Üres a darab!</p>}
             <div className="form-actions">
-                <button disabled={!formIsValid}>Küldés</button>
+                <button onClick={props.onShow}>Mégse</button>
+                <button disabled={!formIsValid}>Frissítés</button>
             </div>
         </form>
     );

@@ -15,6 +15,7 @@ export const Create = (props) => {
     
     }
    );
+   window.location.href = "/";
   }
 
 
